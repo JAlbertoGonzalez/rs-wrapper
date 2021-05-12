@@ -1,4 +1,4 @@
-const { ReedSolomonErasure } = require("@subspace/reed-solomon-erasure.wasm");
+import { ReedSolomonErasure } from "@subspace/reed-solomon-erasure.wasm";
 
 export async function encode(file: Buffer, shardSize: number, totalShards: number, partityShards: number) {
     const reedSolomonErasure = await ReedSolomonErasure.fromCurrentDirectory();
