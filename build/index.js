@@ -37,13 +37,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.recontruct = exports.encode = void 0;
-var ReedSolomonErasure = require("@subspace/reed-solomon-erasure.wasm").ReedSolomonErasure;
+var reed_solomon_erasure_wasm_1 = require("@subspace/reed-solomon-erasure.wasm");
 function encode(file, shardSize, totalShards, partityShards) {
     return __awaiter(this, void 0, void 0, function () {
         var reedSolomonErasure, output;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, ReedSolomonErasure.fromCurrentDirectory()];
+                case 0: return [4 /*yield*/, reed_solomon_erasure_wasm_1.ReedSolomonErasure.fromCurrentDirectory()];
                 case 1:
                     reedSolomonErasure = _a.sent();
                     output = new Uint8Array(shardSize * (totalShards + partityShards));

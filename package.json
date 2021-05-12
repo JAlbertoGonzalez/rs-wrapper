@@ -4,6 +4,7 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
+    "build": "tsc",
     "lint": "tslint 'src/**/*.ts'",
     "test": "ts-mocha tests/**/*.unit.ts"
   },
