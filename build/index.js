@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.recontruct = exports.encode = void 0;
+exports.reconstruct = exports.encode = void 0;
 var reed_solomon_erasure_wasm_1 = require("@subspace/reed-solomon-erasure.wasm");
 function encode(file, shardSize, totalShards, partityShards) {
     return __awaiter(this, void 0, void 0, function () {
@@ -55,11 +55,18 @@ function encode(file, shardSize, totalShards, partityShards) {
     });
 }
 exports.encode = encode;
-function recontruct() {
+function reconstruct(input, totalShards, parityShards, shardsAvailable) {
     return __awaiter(this, void 0, void 0, function () {
+        var reedSolomonErasure, result;
         return __generator(this, function (_a) {
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, reed_solomon_erasure_wasm_1.ReedSolomonErasure.fromCurrentDirectory()];
+                case 1:
+                    reedSolomonErasure = _a.sent();
+                    result = reedSolomonErasure.reconstruct(input, totalShards, parityShards, shardsAvailable);
+                    return [2 /*return*/, input];
+            }
         });
     });
 }
-exports.recontruct = recontruct;
+exports.reconstruct = reconstruct;
