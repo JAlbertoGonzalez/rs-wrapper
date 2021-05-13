@@ -4,7 +4,7 @@ function shardSize(hops: number): number {
     return MIN_SHARD_SIZE * Math.pow(2, hops);
 }
 
-export default function determineShardSize(fileSize: number, accumulator: number = 0): number {
+export function determineShardSize(fileSize: number, accumulator: number = 0): number {
     if (fileSize < 0) { return 0; }
 
     let hops = ((accumulator - SHARD_MULTIPLE_BACK) < 0) ? 0 : accumulator - SHARD_MULTIPLE_BACK;
@@ -25,4 +25,8 @@ export default function determineShardSize(fileSize: number, accumulator: number
     }
 
     return determineShardSize(fileSize, ++accumulator);
+}
+
+export function determineParityShards(totalShards: number) {
+    return Math.ceil(totalShards * 2 / 3);
 }

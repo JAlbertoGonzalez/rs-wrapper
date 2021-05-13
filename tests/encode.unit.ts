@@ -1,6 +1,7 @@
 import { expect } from 'chai'
 import { encode, reconstruct } from '../src';
 import crypto from 'crypto';
+import { determineParityShards, determineShardSize } from '../src/utils'
 
 describe('should encode', () => {
     it('should encode', async () => {
@@ -58,10 +59,16 @@ describe('should encode', () => {
 })
 
 describe('benchmark', () => {
-    it('should 80x10x1M', function (done) {
-        this.timeout(10000)
-        const newData = crypto.randomBytes(1000);
-        encode(newData, 1000000, 20, 80).then(() => {
+    it('should 11x16x1GB', function (done) {
+        this.timeout(1000000)
+        const newData = crypto.randomBytes(1024 * 1024 * 1024);
+        const FILE_SIZE = newData.length;
+        const SHARD_SIZE = determineShardSize(FILE_SIZE);
+        const TOTAL_SHARDS = Math.ceil(FILE_SIZE / SHARD_SIZE);
+        const TOTAL_PARITY = determineParityShards(TOTAL_SHARDS);
+        console.log('SE VA A EJECUTAR', SHARD_SIZE, TOTAL_SHARDS, TOTAL_PARITY)
+        encode(newData, SHARD_SIZE, TOTAL_SHARDS, TOTAL_PARITY).then(() => {
+            console.log('HA ACABADO');
             done();
         });
     });
