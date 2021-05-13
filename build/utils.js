@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.determineParityShards = exports.determineShardSize = void 0;
 var constants_1 = require("./constants");
 function shardSize(hops) {
     return constants_1.MIN_SHARD_SIZE * Math.pow(2, hops);
@@ -23,4 +24,8 @@ function determineShardSize(fileSize, accumulator) {
     }
     return determineShardSize(fileSize, ++accumulator);
 }
-exports.default = determineShardSize;
+exports.determineShardSize = determineShardSize;
+function determineParityShards(totalShards) {
+    return Math.ceil(totalShards * 2 / 3);
+}
+exports.determineParityShards = determineParityShards;
