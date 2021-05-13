@@ -17,3 +17,4 @@ export declare function encode(file: Buffer, shardSize: number, totalShards: num
  * @returns
  */
 export declare function reconstruct(input: Buffer | Uint8Array, totalShards: number, parityShards: number, shardsAvailable: boolean[]): Promise<Buffer | Uint8Array>;
+export * as utils from './utils';

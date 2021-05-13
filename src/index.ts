@@ -45,3 +45,5 @@ export async function reconstruct(input: Buffer | Uint8Array, totalShards: numbe
     }
     return input;
 }
+
+export * as utils from './utils';
