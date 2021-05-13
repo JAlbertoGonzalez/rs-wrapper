@@ -35,12 +35,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.reconstruct = exports.encode = void 0;
 var reed_solomon_erasure_wasm_1 = require("@subspace/reed-solomon-erasure.wasm");
+var errorcodes_1 = __importDefault(require("./errorcodes"));
+/**
+ *
+ * @param file Original file buffer
+ * @param shardSize Size of each shard
+ * @param totalShards Total number of shards, used to split the original file
+ * @param partityShards Total number of parity shards desired
+ * @returns
+ */
 function encode(file, shardSize, totalShards, partityShards) {
     return __awaiter(this, void 0, void 0, function () {
-        var reedSolomonErasure, output;
+        var reedSolomonErasure, output, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, reed_solomon_erasure_wasm_1.ReedSolomonErasure.fromCurrentDirectory()];
@@ -48,22 +60,40 @@ function encode(file, shardSize, totalShards, partityShards) {
                     reedSolomonErasure = _a.sent();
                     output = new Uint8Array(shardSize * (totalShards + partityShards));
                     output.set(file.slice());
-                    reedSolomonErasure.encode(output, totalShards, partityShards);
+                    result = reedSolomonErasure.encode(output, totalShards, partityShards);
+                    if (result !== 0) {
+                        throw Error(errorcodes_1.default[result]);
+                    }
                     return [2 /*return*/, output];
             }
         });
     });
 }
 exports.encode = encode;
+/**
+ *
+ * @param input Entire file buffer WITH parity shards
+ * @param totalShards Total number of original SHARDS (without parity)
+ * @param parityShards Total number of parity shards
+ * @param shardsAvailable Boolean array to
+ * @returns
+ */
 function reconstruct(input, totalShards, parityShards, shardsAvailable) {
     return __awaiter(this, void 0, void 0, function () {
         var reedSolomonErasure, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, reed_solomon_erasure_wasm_1.ReedSolomonErasure.fromCurrentDirectory()];
+                case 0:
+                    if (shardsAvailable.length !== totalShards + parityShards) {
+                        throw Error('Available shards do not match total shards');
+                    }
+                    return [4 /*yield*/, reed_solomon_erasure_wasm_1.ReedSolomonErasure.fromCurrentDirectory()];
                 case 1:
                     reedSolomonErasure = _a.sent();
                     result = reedSolomonErasure.reconstruct(input, totalShards, parityShards, shardsAvailable);
+                    if (result !== 0) {
+                        throw Error(errorcodes_1.default[result]);
+                    }
                     return [2 /*return*/, input];
             }
         });
