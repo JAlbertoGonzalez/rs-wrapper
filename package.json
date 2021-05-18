@@ -23,6 +23,6 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@subspace/reed-solomon-erasure.wasm": "^0.2.5"
+    "@subspace/reed-solomon-erasure.wasm": "JAlbertoGonzalez/reed-solomon-erasure.wasm"
   }
 }

@@ -34,10 +34,9 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@subspace/reed-solomon-erasure.wasm@^0.2.5":
+"@subspace/reed-solomon-erasure.wasm@JAlbertoGonzalez/reed-solomon-erasure.wasm":
   version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@subspace/reed-solomon-erasure.wasm/-/reed-solomon-erasure.wasm-0.2.5.tgz#6e4651445ac5c16925d687eb3cb3e890afd76de4"
-  integrity sha512-dMAvEY2Z1Txquat0Ur2424sqz18YRD4OwXihiLxCLTKl5zJvH1/LuuUPOYl5kqu+M41j0TTzscvhXHuK+GiOoQ==
+  resolved "https://codeload.github.com/JAlbertoGonzalez/reed-solomon-erasure.wasm/tar.gz/c3cb987d7d7d335ca37cbd04493121d66a03c239"
   dependencies:
     "@types/node" "^12.7.5"
 
@@ -88,9 +87,9 @@
   integrity sha512-p68+a+KoxpoB47015IeYZYRrdqMUcpbK8re/zpFB8Ld46LHC1lPEbp3EXgkEhAYEcPvjJF6ZO+869SQ0aH1dcA==
 
 "@types/node@^12.7.5":
-  version "12.20.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.12.tgz#fd9c1c2cfab536a2383ed1ef70f94adea743a226"
-  integrity sha512-KQZ1al2hKOONAs2MFv+yTQP1LkDWMrRJ9YCVRalXltOfXsBmH5IownLxQaiq0lnAHwAViLnh2aTYqrPcRGEbgg==
+  version "12.20.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.13.tgz#e743bae112bd779ac9650f907197dd2caa7f0364"
+  integrity sha512-1x8W5OpxPq+T85OUsHRP6BqXeosKmeXRtjoF39STcdf/UWLqUsoehstZKOi0CunhVqHG17AyZgpj20eRVooK6A==
 
 "@types/stack-utils@^2.0.0":
   version "2.0.0"
