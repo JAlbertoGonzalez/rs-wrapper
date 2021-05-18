@@ -36,7 +36,7 @@
 
 "@subspace/reed-solomon-erasure.wasm@JAlbertoGonzalez/reed-solomon-erasure.wasm":
   version "0.2.5"
-  resolved "https://codeload.github.com/JAlbertoGonzalez/reed-solomon-erasure.wasm/tar.gz/c3cb987d7d7d335ca37cbd04493121d66a03c239"
+  resolved "https://codeload.github.com/JAlbertoGonzalez/reed-solomon-erasure.wasm/tar.gz/d91f12f6107ec282493f347d4c3f627a1f844e96"
   dependencies:
     "@types/node" "^12.7.5"
 
